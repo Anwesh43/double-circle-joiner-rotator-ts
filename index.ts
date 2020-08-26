@@ -9,3 +9,17 @@ const colors : Array<string> = ["#F44336", "#3F51B5", "#4CAF50", "#00BCD4", "#FF
 const rot : number = Math.PI / 2 
 const delay : number = 20
 
+class ScaleUtil {
+
+    static maxScale(scale : number, i : number, n : number) : number {
+        return Math.max(0, scale - i / n)
+    }
+
+    static divideScale(scale : number, i : number, n : number) : number {
+        return Math.min(1 / n, ScaleUtil.maxScale(scale, i, n)) * n 
+    }
+
+    static sinify(scale : number) {
+        return Math.sin(scale * Math.PI)
+    }
+}
