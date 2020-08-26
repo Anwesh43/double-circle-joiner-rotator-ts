@@ -34,6 +34,9 @@ class DrawingUtil {
     }
 
     static drawLine(context : CanvasRenderingContext2D, x1 : number, y1 : number, x2 : number, y2 : number) {
+        if (x1 == x2 && y1 == y2) {
+            return 
+        }
         context.beginPath()
         context.moveTo(x1, y1)
         context.lineTo(x2, y2)
@@ -55,7 +58,7 @@ class DrawingUtil {
         for (var j = 0; j < 2; j++) {
             DrawingUtil.drawCircle(context, gap * (1 - 2 * j), (h * 0.5 - size / 2) * (1 - sf2), r)
         }
-        DrawingUtil.drawLine(context, -gap, 0, -gap + 2 * gap * sf3, 0)
+        DrawingUtil.drawLine(context, -gap * sf3, 0, gap * sf3, 0)
         context.restore()
     }
 
