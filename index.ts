@@ -207,3 +207,25 @@ class CircleJoinerRotator {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+
+    cjr : CircleJoinerRotator = new CircleJoinerRotator()
+    animator : Animator = new Animator()
+
+    render(context : CanvasRenderingContext2D) {
+        this.cjr.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.cjr.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.cjr.update(() => {
+                    cb()
+                    this.animator.stop()
+                })
+            })
+        })
+    }
+}
